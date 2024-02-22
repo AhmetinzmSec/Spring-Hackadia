@@ -1,0 +1,16 @@
+.contact {
+
+    background: #000;
+
+}
+
+.contact label {
+    color: #fff;
+}
+
+.contact input {
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 1px solid var(--first-color);
+}

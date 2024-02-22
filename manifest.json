@@ -1,0 +1,24 @@
+{
+    "name": "Hackadia",
+    "short_name": "Hackadia",
+    "description": "Bienvenid@s a #ProgramadorFitness, serie de videos, donde te daré consejos para llevar una vida saludable y evitar el sedentarismo. Recuerda... mente sana en cuerpo sano :)",
+    "background_color": "#101013",
+    "theme_color": "#101013",
+    "orientation": "portrait",
+    "display": "standalone",
+    "start_url": "http://127.0.0.1/Spring%20Hackadia/",
+    "scope": "./",
+    "lang": "es-MX",
+    "icons": [
+      {
+        "src": "./assets/img/hackadia.png",
+        "sizes": "1024x1024",
+        "type": "image/png"
+      },
+      {
+        "src": "./assets/img/hackadia.png",
+        "sizes": "16x16",
+        "type": "image/png"
+      }
+    ]
+  }

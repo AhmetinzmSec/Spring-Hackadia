@@ -1,0 +1,36 @@
+.footer__floating {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;
+ }
+ .footer__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ }
+ .footer__logo-img {
+    height: 50px;
+ }
+ .footer__socials {
+    display: flex;
+    gap: 20px;
+ }
+ .footer__social-link {
+    color: white;
+    font-size: 24px;
+ }
+ .footer__copy {
+    margin: 0;
+ }
+
+.footer__floating.dark-mode,
+.footer__floating.dark-mode a{
+    color: black;
+}
