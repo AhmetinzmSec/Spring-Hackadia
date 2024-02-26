@@ -37,7 +37,7 @@
 
          </a>
 
-         <div class="nav__menu" id="nav-menu" ">
+         <div class="nav__menu" id="nav-menu">
             <ul class=" nav__list">
 
             <li class="nav__item"><a href="#home" class="nav__link">Ana Sayfa</a></li>
@@ -46,15 +46,7 @@
             <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
 
             <?php
-            session_start();
-            $host = 'localhost'; // veya kendi sunucunuzun adresi
-            $dbUsername = 'root'; // veya veritabanı kullanıcı adınız
-            $dbPassword = 'root'; // veya veritabanı şifreniz
-            $dbName = 'hackadia'; // veritabanı adı
-            $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-            if ($conn->connect_error) {
-               die("Bağlantı hatası: " . $conn->connect_error);
-            }
+            include 'connection.php';
             if (isset($_SESSION['username'])) {
                echo '<li class="nav__item"><a href="profile.php" class="nav__link">' . $_SESSION['username'] . '</a></li>';
             } else {
@@ -111,7 +103,7 @@
                      Hackadia siber güvenlik ve modern arayüzü birleştirerek yeni bir çağ başlatıyor
                   </p>
 
-                  <a href="" class="home__button">
+                  <a href="questions/index.php" class="home__button">
                      Deneyimle
                   </a>
 

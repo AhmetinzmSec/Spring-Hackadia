@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
         header('Location: index.php');
         exit;
     } else {
-        $error = "Geçersiz kullanıcı adı veya şifre";
+        echo "<script>alert('Geçersiz kullanıcı adı veya şifre')</script>";
     }
 }
 
@@ -36,14 +36,14 @@ if (isset($_POST['register'])) {
     $profanityWords = array("küfürlü_kelime1", "küfürlü_kelime2", "küfürlü_kelime3");
     foreach ($profanityWords as $word) {
         if (stripos($username, $word) !== false) {
-            $error = "Kullanıcı adında küfürlü bir kelime içeremez.";
+            echo "<script>alert('Kullanıcı adında küfürlü bir kelime içeremez.')</script>";
             break;
         }
     }
 
     // Şifrenin basit ardışık sayılardan oluşup olmadığını kontrol etme
     if (preg_match('/\d{4,}/', $password)) {
-        $error = "Şifre basit ardışık sayılardan oluşamaz.";
+        echo "<script>alert('Şifre basit ardışık sayılardan oluşamaz.')</script>";
     }
 
     // Kullanıcı adının benzersiz olup olmadığını kontrol etme
@@ -51,11 +51,12 @@ if (isset($_POST['register'])) {
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
-        $error = "Bu kullanıcı adı zaten kullanımda.";
+        echo "<script>alert('Bu kullanıcı adı zaten kullanımda.')</script>";
     } else {
         // Kullanıcıyı veritabanına kaydetme
         $role = "Hackadia Üyesi"; // Yeni eklenen satır
-        $query = "INSERT INTO users (username, password, email, role) VALUES ('$username', '$password', '$email', '$role')";
+        $biography = "Burası çok sessiz";
+        $query = "INSERT INTO users (username, password, email, role, biography) VALUES ('$username', '$password', '$email', '$role', '$biography')";
         mysqli_query($conn, $query);
         $_SESSION['username'] = $username;
         header('Location: login.php');

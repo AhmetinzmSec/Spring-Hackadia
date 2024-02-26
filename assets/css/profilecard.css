@@ -182,7 +182,8 @@ main {
 }
 
 #main_section_container_2,
-#main_section_container_3 {
+#main_section_container_3,
+#main_section_container_4 {
     display: none;
 }
 

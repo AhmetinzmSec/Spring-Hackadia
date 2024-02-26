@@ -1,15 +1,5 @@
 <?php
-session_start();
-
-$host = 'localhost';
-$dbUsername = 'root';
-$dbPassword = 'root';
-$dbName = 'hackadia';
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-
-if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
-}
+include 'connection.php';
 
 if (isset($_SESSION['username'])) {
 } else {
@@ -130,7 +120,8 @@ https://github.com/ardacarofficial/links-website is open source project.
             <ul class="header_nav_menu_list flex_no_wrap_row_center">
                 <li data-target="#main_section_container_1" id="header_nav_menu_item_1" class="header_nav_menu_item" href="">Profil Bilgisi</li>
                 <li data-target="#main_section_container_2" id="header_nav_menu_item_2" class="header_nav_menu_item" href="">Kullanıcı Adı Değiştir</li>
-                <li data-target="#main_section_container_3" id="header_nav_menu_item_3" class="header_nav_menu_item" href="">Şifre Değiştir</li>
+                <li data-target="#main_section_container_3" id="header_nav_menu_item_3" class="header_nav_menu_item" href="">Bio Değiştir</li>
+                <li data-target="#main_section_container_4" id="header_nav_menu_item_4" class="header_nav_menu_item" href="">Şifre Değiştir</li>
             </ul>
         </nav>
         <!-- Menu Codes End -->
@@ -141,7 +132,23 @@ https://github.com/ardacarofficial/links-website is open source project.
         <section id="main_section_container_1" class="flex_column_center">
             <!-- Menu Text Item -->
             <div class="main_text_item">
-                <p>Kullanıcı Açıklaması</p>
+                <?php
+                $currentUsername = $_SESSION['username'];
+
+                // Kullanıcının biyografisini getir
+                $getBioQuery = "SELECT biography FROM users WHERE username = '$currentUsername'";
+                $getBioResult = $conn->query($getBioQuery);
+
+                if ($getBioResult->num_rows > 0) {
+                    $row = $getBioResult->fetch_assoc();
+                    $currentBio = $row['biography'];
+
+                    // Biyografi bilgisini göster
+                    echo "<p>$currentBio</p>";
+                } else {
+                    echo "<p>Biyografi bulunamadı.</p>";
+                }
+                ?>
             </div>
             <!-- Menu Small Item -->
             <div class="main_small_button_list">
@@ -168,24 +175,66 @@ https://github.com/ardacarofficial/links-website is open source project.
         <section id="main_section_container_2" class="flex_column_center">
             <!-- Menu Text Item -->
             <div class="main_text_item">
-                <p>Kullanıcı adı değiştirmek için bu menüyü kullanabilirsiniz.</p>
+                <p>Kullanıcı adı ve bio değiştirmek için bu menüyü kullanabilirsiniz.</p>
             </div>
 
             <!-- Menu Small Item -->
             <div class="main_small_button_list">
 
                 <form method="post" action="changeusername.php">
-                    <input type="text" name="new_username" class="main_button_item" placeholder="Yeni Kullanıcı Adınız" required><br>
+                    <div class="form-group">
+                        <input type="text" name="new_username" class="main_button_item" placeholder="Yeni Kullanıcı Adınız" required><br>
 
-                    <input type="submit" class="main_button_item" value="Kullanıcı Adını Değiştir">
+                        <input type="submit" class="main_button_item" value="Kullanıcı Adını Değiştir">
+                    </div>
                 </form>
+
             </div>
 
         </section>
         <!-- Menu Container 2 Codes End -->
 
-        <!-- Menu Container 3 Codes Start -->
         <section id="main_section_container_3" class="flex_column_center">
+            <!-- Menu Text Item -->
+            <div class="main_text_item">
+                <p>Kullanıcı adı ve bio değiştirmek için bu menüyü kullanabilirsiniz.</p>
+            </div>
+
+            <?php
+
+            $currentUsername = $_SESSION['username'];
+
+            // Kullanıcının mevcut biyografi bilgisini getir
+            $getBioQuery = "SELECT biography FROM users WHERE username = '$currentUsername'";
+            $getBioResult = $conn->query($getBioQuery);
+
+            if ($getBioResult->num_rows > 0) {
+                $row = $getBioResult->fetch_assoc();
+                $currentBio = $row['biography'];
+            } else {
+                $currentBio = "";
+            }
+
+            echo "<p>Current Biography: " . $currentBio . "</p>";
+
+            ?>
+
+            <!-- Menu Small Item -->
+            <div class="main_small_button_list">
+
+                <form action='changebio.php' method='post'>
+                    <div class="form-group">
+                        <input type="text" name='newBio' id='newBio' class="main_button_item" placeholder="Yeni Bio"></input><br>
+                        <input type='submit' class="main_button_item" value='Biyografiyi Güncelle'>
+                    </div>
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- Menu Container 3 Codes Start -->
+        <section id="main_section_container_4" class="flex_column_center">
             <!-- Menu Text Item -->
             <div class="main_text_item">
                 <p>Şifre Değiştirme Test Menüsü</p>
