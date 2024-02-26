@@ -95,9 +95,26 @@ body {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    color: #fff;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 10px;
+}
+
+textarea{
+    background: transparent;
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    color: #fff;
+    border-radius: 5px;
+    transition: all .3s;
+    resize: none;
+}
+
+textarea:focus{
+    border-radius: 10px;
 }

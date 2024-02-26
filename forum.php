@@ -54,6 +54,34 @@ include "./connecti.php";
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ftco-animate">
+
+
+                    <div class="comment-form-wrap pt-5 col-md-12" style="margin-left: 177px;">
+                        <h3 class="mb-5">Sorular</h3>
+                        <!-- Bir düğme veya başka bir tetikleyici -->
+                        <!-- Bir düğme veya başka bir tetikleyici -->
+                        <button id="openFormBtn">Formu Göster</button>
+
+                        <!-- Modal -->
+                        <div id="myModal">
+                            <div class="modal-content">
+                                <!-- Form içeriği -->
+                                <form action="post.php" class="p-5 bg-light" method="POST" enctype="multipart/form-data" name="question">
+                                    <div class="form-group">
+                                        <label for="soru">Soru</label>
+                                        <textarea name="question" id="question" cols="30" rows="35" class="form-control" style="width:100%;" type="text" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Gönder" class="btn py-3 px-4 btn-primary">
+                                    </div>
+                                </form>
+                                <!-- Form içeriği sonu -->
+                                <span onclick="closeModal()" style="cursor: pointer;">Kapat</span>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <script type="text/javascript">
                         function asagiKaydir() {
                             window.scrollBy(0, 4285.7)
@@ -82,7 +110,7 @@ include "./connecti.php";
                             $questionId = $q["id"];
                             $answers = $db->query("SELECT * FROM answers where id=" . $questionId . "");
                             ?>
-                            <div class="d-none" id="cevapCollapse<?= $q["id"] ?>">
+                            <div class="d-open" id="cevapCollapse<?= $q["id"] ?>">
                                 <?php
 
                                 foreach ($answers as $a) {
@@ -110,31 +138,6 @@ include "./connecti.php";
                     <?php
                     }
                     ?>
-                    <div class="comment-form-wrap pt-5 col-md-12" style="margin-left: 177px;">
-                        <h3 class="mb-5">Sorular</h3>
-                        <!-- Bir düğme veya başka bir tetikleyici -->
-                        <!-- Bir düğme veya başka bir tetikleyici -->
-                        <button id="openFormBtn">Formu Göster</button>
-
-                        <!-- Modal -->
-                        <div id="myModal">
-                            <div class="modal-content">
-                                <!-- Form içeriği -->
-                                <form action="post.php" class="p-5 bg-light" method="POST" enctype="multipart/form-data" name="question">
-                                    <div class="form-group">
-                                        <label for="soru">Soru</label>
-                                        <textarea name="question" id="question" cols="30" rows="10" class="form-control" style="width:100%;" type="text" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="submit" value="Gönder" class="btn py-3 px-4 btn-primary">
-                                    </div>
-                                </form>
-                                <!-- Form içeriği sonu -->
-                                <span onclick="closeModal()" style="cursor: pointer;">Kapat</span>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
@@ -159,7 +162,7 @@ include "./connecti.php";
     <script>
         $(document).ready(function() {
 
-            $(".answerCollapse").on("click", function() {
+            $(".cevapCollapse").on("click", function() {
                 var tiklanan = $(this).attr("href");
                 var a = $(tiklanan).attr("class");
                 if (a == "") {
@@ -181,25 +184,26 @@ include "./connecti.php";
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-    // Modal'ı açan ve kapatan JavaScript kodu
-    var modal = document.getElementById('myModal');
-    var openFormBtn = document.getElementById('openFormBtn');
+        // Modal'ı açan ve kapatan JavaScript kodu
+        var modal = document.getElementById('myModal');
+        var openFormBtn = document.getElementById('openFormBtn');
 
-    openFormBtn.addEventListener('click', function() {
-        modal.style.display = 'block';
-    });
+        openFormBtn.addEventListener('click', function() {
+            modal.style.display = 'block';
 
-    function closeModal() {
-        modal.style.display = 'none';
-    }
+        });
 
-    // Sayfa dışına tıklandığında modal'ı kapat
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        function closeModal() {
             modal.style.display = 'none';
         }
-    }
-</script>
+
+        // Sayfa dışına tıklandığında modal'ı kapat
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 
 </body>
 
