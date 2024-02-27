@@ -18,24 +18,19 @@ include "./connecti.php";
 <body>
 
     <?php
-    $questions = $db->query("SELECT * FROM questions q INNER JOIN users u on q.user_id=u.id");
+    $questions = $db->query("SELECT * FROM questions q INNER JOIN users s on u.id = q.user_id");
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     ?>
     <?php
     if ($_POST) {
-        $user_id = $db->query("SELECT * FROM  questions WHERE user_id");
+        $user_id = $db->query("SELECT * FROM  questions WHERE user_id = 1 ");
     }
     ?>
     <?php
     $users = $db->query("SELECT * FROM `users`");
     ?>
-    <?php
-    if (isset($_GET["user_id"])) {
-        $user_id = $_GET["user_id"];
-        $questions = $db->query("SELECT * FROM questions where user_id = " . $user_id . "");
-    }
-    ?>
+
 
     <!-- <div class="js-fullheight"> -->
     <div class="hero-wrap js-fullheight">
@@ -55,9 +50,9 @@ include "./connecti.php";
             <div class="row">
                 <div class="col-md-8 ftco-animate">
 
-
                     <div class="comment-form-wrap pt-5 col-md-12" style="margin-left: 177px;">
                         <h3 class="mb-5">Sorular</h3>
+                        <!-- Bir düğme veya başka bir tetikleyici -->
                         <!-- Bir düğme veya başka bir tetikleyici -->
                         <button id="openFormBtn">Formu Göster</button>
 
@@ -92,7 +87,6 @@ include "./connecti.php";
                     <?php
                     foreach ($questions as $q) {
                     ?>
-
                         <div class="blog_author">
                             <div class="media">
                                 <div class="media-body">
@@ -100,7 +94,7 @@ include "./connecti.php";
                                     <h4><?php echo $q["username"]; ?></h4>
                                     <p><?php echo $q["question"]; ?></p>
                                 </div>
-                                <a class="btn btn-primary cevapCollapse" role="button" style="margin-right: 432px; margin-top: 83px;" href="#cevapCollapse<?= $q["id"] ?>" data-target="#cevapCollapse<?= $s["id"] ?>">Cevapları göster</a>
+                                <a class="btn btn-primary cevapCollapse" role="button" style="margin-right: 432px; margin-top: 83px;" href="#cevapCollapse<?= $q["id"] ?>" data-target="#cevapCollapse<?= $q["id"] ?>">Cevapları göster</a>
                             </div>
                         </div>
                         <div class="blog_comment" style="margin-left: 39px; margin-bottom: 33px; margin-top: 24px;">
@@ -111,14 +105,16 @@ include "./connecti.php";
                             ?>
                             <div class="d-open" id="cevapCollapse<?= $q["id"] ?>">
                                 <?php
+
                                 foreach ($answers as $a) {
+
                                 ?>
                                     <div class="media">
                                         <div class="d-flex">
                                             <h5 style="margin-left: 28px;"><?php echo date("d.m.Y H:i", strtotime($q["time"])); ?>
                                                 <?php
                                                 $userId = $a["user_id"];
-                                                $users = $db->query("SELECT * FROM users where id=" . $userId . "")->fetch();
+                                                $users = $db->query("SELECT * FROM users where id=" . $user_id . "")->fetch();
 
                                                 ?>
                                                 <?php echo $users["username"]; ?></h5>
@@ -144,11 +140,11 @@ include "./connecti.php";
 
         <div class="footer__content">
 
-             <a href="#home" class="footer__logo">
+            <a href="#home" class="footer__logo">
 
-                 <img src="assets/img/hackadia.png" alt="Hackadia Logo" class="footer__logo-img">
+                <img src="assets/img/hackadia.png" alt="Hackadia Logo" class="footer__logo-img">
 
-             </a>
+            </a>
 
             <p class="footer__copy">&#169; Hackadia. All rights reserved.</p>
 
@@ -175,12 +171,13 @@ include "./connecti.php";
         })
     </script>
 
+    <!-- Bootstrap JS ve jQuery kullanarak modal işlevselliğini ekleyebilirsiniz -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-       
+        // Modal'ı açan ve kapatan JavaScript kodu
         var modal = document.getElementById('myModal');
         var openFormBtn = document.getElementById('openFormBtn');
 
@@ -193,6 +190,7 @@ include "./connecti.php";
             modal.style.display = 'none';
         }
 
+        // Sayfa dışına tıklandığında modal'ı kapat
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = 'none';

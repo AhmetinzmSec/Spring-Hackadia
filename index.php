@@ -20,6 +20,8 @@
 
    <link rel="stylesheet" href="assets/css/footer.css">
 
+   <link rel="stylesheet" href="assets/css/timeline.css">
+
    <title>Hackadia</title>
 
    <link rel="manifest" href="./manifest.json">
@@ -40,19 +42,18 @@
          <div class="nav__menu" id="nav-menu">
             <ul class=" nav__list">
 
-            <li class="nav__item"><a href="#home" class="nav__link">Ana Sayfa</a></li>
-            <li class="nav__item"><a href="#projects" class="nav__link">Projeler</a></li>
-            <li class="nav__item"><a href="#target" class="nav__link">Hedef</a></li>
-            <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
+               <li class="nav__item"><a href="#home" class="nav__link">Ana Sayfa</a></li>
+               <li class="nav__item"><a href="#target" class="nav__link">Hedef</a></li>
+               <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
 
-            <?php
-            include 'connection.php';
-            if (isset($_SESSION['username'])) {
-               echo '<li class="nav__item"><a href="profile.php" class="nav__link">' . $_SESSION['username'] . '</a></li>';
-            } else {
-               echo '<li class="nav__item"><a href="login.php" class="nav__link">Giriş</a></li>';
-            }
-            ?>
+               <?php
+               include 'connection.php';
+               if (isset($_SESSION['username'])) {
+                  echo '<li class="nav__item"><a href="profile.php" class="nav__link">' . $_SESSION['username'] . '</a></li>';
+               } else {
+                  echo '<li class="nav__item"><a href="login.php" class="nav__link">Giriş</a></li>';
+               }
+               ?>
 
             </ul>
 
@@ -132,52 +133,64 @@
 
          <div class="home__container container">
 
-            <div class="box-area">
-               <div class="box active">
-                  <img src="https://cdn.discordapp.com/attachments/836225187132473364/1166723146926264340/group4.png?ex=65955a9a&is=6582e59a&hm=2011aac3b7a85fff984e5d2275d7dbfde1545e44ed4e2958a5b9ea8706ce7845&" alt="img">
+            <form>
 
-                  <h2>Neuron Player</h2>
-                  <p>
-                     Gelişmiş Müzik Oynatıcısı
-                  </p>
-               </div>
-               <div class="box">
-                  <img src="https://cdn.discordapp.com/attachments/836225187132473364/1166723146926264340/group4.png?ex=65955a9a&is=6582e59a&hm=2011aac3b7a85fff984e5d2275d7dbfde1545e44ed4e2958a5b9ea8706ce7845&" alt="img">
+               <input type="radio" name="fancy" autofocus style="display:none;" value="neuron" id="neuron" />
+               <input type="radio" name="fancy" style="display:none;" value="ziga" id="ziga" />
+               <input type="radio" name="fancy" style="display:none;" value="algan" id="algan" />
+               <input type="radio" name="fancy" style="display:none;" value="sedan" id="sedan" />
 
-                  <h2>Dock Studio</h2>
-                  <p>
-                     DNS Sunucusunu Arayüzü
-                  </p>
-               </div>
-               <div class="box">
-                  <img src="https://cdn.discordapp.com/attachments/836225187132473364/1166723146926264340/group4.png?ex=65955a9a&is=6582e59a&hm=2011aac3b7a85fff984e5d2275d7dbfde1545e44ed4e2958a5b9ea8706ce7845&" alt="img">
+               <label class="neuron" for="neuron">&#9827; Neuron</label>
+               
+               <label class="ziga" for="ziga">&#9830; TULGAR: Ziga</label>
 
-                  <h2>Thunar Dock</h2>
-                  <p>
-                     Windows Programları Gruplayın
-                  </p>
-               </div>
-               <div class="box">
-                  <img src="https://cdn.discordapp.com/attachments/836225187132473364/1166723146926264340/group4.png?ex=65955a9a&is=6582e59a&hm=2011aac3b7a85fff984e5d2275d7dbfde1545e44ed4e2958a5b9ea8706ce7845&" alt="img">
+               <label class="algan" for="algan">&#9830; TULGAR: Algan</label>
 
-                  <h2>Typegraf</h2>
-                  <p>
-                     MD Tabanlı Not Defteri
-                  </p>
-               </div>
-               <div class="box">
-                  <img src="https://cdn.discordapp.com/attachments/836225187132473364/1166723146926264340/group4.png?ex=65955a9a&is=6582e59a&hm=2011aac3b7a85fff984e5d2275d7dbfde1545e44ed4e2958a5b9ea8706ce7845&" alt="img">
-
-                  <h2>Project 12 (TULGAR: Algan)</h2>
-                  <p>
-                     GraphQL Tabanlı Node Editor
-                  </p>
-               </div>
-            </div>
-
-            <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+               <label class="sedan" for="sedan">&#9830; TULGAR: Sedan</label>
+            </form>
             <script src="assets/js/slider.js"></script>
 
+         </div>
+
+      </section>
+
+      <section class="target" id="target">
+
+         <div class="home__container container">
+            <div class="timeline">
+               <div class="outer">
+                  <div class="card">
+                     <div class="info">
+                        <h3 class="title">Title 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="info">
+                        <h3 class="title">Title 2</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="info">
+                        <h3 class="title">Title 3</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="info">
+                        <h3 class="title">Title 4</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="info">
+                        <h3 class="title">Title 5</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
 
       </section>

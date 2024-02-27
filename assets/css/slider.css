@@ -1,128 +1,112 @@
-@import url(styles.css);
-
-.signature {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
+* {
+	box-sizing: border-box;
 }
 
-.signature a {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    color: #0cb9d8;
-    text-decoration: none;
+label {
+	background: transparent;
+	backdrop-filter: blur(20px);
+	color: #fff;
+	transition: transform 400ms ease-out;
+	display: inline-block;
+	min-height: 100%;
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	z-index: 1;
+	text-align: center;
 }
 
-.box-area {
-    width: 100%;
-    height: 100vh;
-    padding-bottom: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+form {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	white-space: nowrap;
 }
 
-.box {
-    width: 70px;
-    height: 400px;
-    margin-right: 20px;
-    overflow: hidden;
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: all linear 0.6s;
+input {
+	position: absolute;
 }
 
-.box:last-child{
-    margin-right: 0;
+.keys {
+	position: fixed;
+	z-index: 10;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 1rem;
+	color: #fff;
+	text-align: center;
+	transition: all 300ms linear;
+	opacity: 0;
 }
 
-.box::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.3);
+input:focus~.keys {
+	opacity: 0.8;
 }
 
-.box img {
-    width: 100%;
-    height: 100%;
-    opacity: 0.7;
-    object-fit: cover;
+input:nth-of-type(1):checked~label:nth-of-type(1),
+input:nth-of-type(2):checked~label:nth-of-type(2),
+input:nth-of-type(3):checked~label:nth-of-type(3),
+input:nth-of-type(4):checked~label:nth-of-type(4) {
+	z-index: 0;
 }
 
-.box i{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    background: #fff;
-    position: absolute;
-    bottom: 20px;
-    left: 10px;
-    font-size: 20px;
+input:nth-of-type(1):checked~label {
+	transform: translate3d(0, 0, 0);
 }
 
-.box:nth-child(1) i{
-    color: #ff5200;
-}
-.box:nth-child(2) i{
-    color: #ca470a;
-}
-.box:nth-child(3) i{
-    color: #00d9ff;
-}
-.box:nth-child(4) i{
-    color: #0077ff;
+input:nth-of-type(2):checked~label {
+	transform: translate3d(-100%, 0, 0);
 }
 
-.box h2 {
-    position: absolute;
-    bottom: 30px;
-    left: 60px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    color: #f6f6f6;
-    font-weight: 600;
-    opacity: 0;
-    transition: all linear 0.3s;
+input:nth-of-type(3):checked~label {
+	transform: translate3d(-200%, 0, 0);
 }
 
-.box p {
-    position: absolute;
-    bottom: 10px;
-    left: 60px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: #f6f6f6;
-    opacity: 0;
-    transition: all linear 0.3s;
+input:nth-of-type(4):checked~label {
+	transform: translate3d(-300%, 0, 0);
 }
 
-.box.active h2{
-    opacity: 1;
+label {
+	background: transparent;
+	backdrop-filter: blur(20px);
+	background-size: cover;
+	font-size: 3rem;
 }
 
-.box.active p{
-    opacity: 1;
+label[for="diamonds"],
+label[for="hearts"] {
+	background: #cc0000;
 }
 
-.active{
-    width: 500px;
-    transition: all linear 0.6s;
+label:before,
+label:after {
+	color: white;
+	display: block;
+	background: rgba(255, 255, 255, 0.2);
+	position: absolute;
+	padding: 1rem;
+	font-size: 3rem;
+	height: 10rem;
+	vertical-align: middle;
+	line-height: 10rem;
+	top: 50%;
+	transform: translate3d(0, -50%, 0);
+	cursor: pointer;
 }
 
-@media screen and (max-width: 968px) {
-    .box-area{
-        margin-left: 0;
-    }
+label:before {
+	content: "\276D";
+	right: 100%;
+	border-top-left-radius: 50%;
+	border-bottom-left-radius: 50%;
+}
 
-    .box-area p{
-        display: none;
-    }
+label:after {
+	content: "\276C";
+	left: 100%;
+	border-top-right-radius: 50%;
+	border-bottom-right-radius: 50%;
 }
