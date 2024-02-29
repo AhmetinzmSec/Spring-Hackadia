@@ -42,7 +42,8 @@ https://github.com/ardacarofficial/links-website is open source project.
     <header class="testing">
         <!-- Logo, Title and Description Codes Start -->
         <div class="header_img flex_column_center">
-            <img src="img/logo.png" alt="Logo" />
+            <img src=" " alt="Profil Fotoğrafı">
+
         </div>
         <div class="header_text flex_column_center">
             <?php
@@ -188,6 +189,12 @@ https://github.com/ardacarofficial/links-website is open source project.
                         <input type="submit" class="main_button_item" value="Kullanıcı Adını Değiştir">
                     </div>
                 </form>
+
+                <form action="changepp.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="profile_picture" accept="image/*" required>
+                    <input type="submit" value="Profil Fotoğrafını Güncelle">
+                </form>
+
 
             </div>
 

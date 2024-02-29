@@ -22,6 +22,10 @@
 
    <link rel="stylesheet" href="assets/css/timeline.css">
 
+   <link rel="stylesheet" href="assets/css/pop-up.css">
+
+   <link rel="stylesheet" href="assets/css/contact.css">
+
    <title>Hackadia</title>
 
    <link rel="manifest" href="./manifest.json">
@@ -33,6 +37,7 @@
    <!--==================== HEADER ====================-->
    <header class="header" id="header">
       <nav class="nav container">
+
          <a href="" class="nav__logo">
 
             <img src="assets/img/hackadia.png" alt="" class="logo">
@@ -43,17 +48,19 @@
             <ul class=" nav__list">
 
                <li class="nav__item"><a href="#home" class="nav__link">Ana Sayfa</a></li>
-               <li class="nav__item"><a href="#target" class="nav__link">Hedef</a></li>
-               <li class="nav__item"><a href="#contact" class="nav__link">İletişim</a></li>
+               <li class="nav__item"><a href="#target" class="nav__link">Projeler</a></li>
+               <li class="nav__item"><a href="#timeline-con" class="nav__link">Yolculuk</a></li>
 
                <?php
                include 'connection.php';
                if (isset($_SESSION['username'])) {
                   echo '<li class="nav__item"><a href="profile.php" class="nav__link">' . $_SESSION['username'] . '</a></li>';
                } else {
-                  echo '<li class="nav__item"><a href="login.php" class="nav__link">Giriş</a></li>';
+                  echo '<li class="nav__item"><a href="forum/login.php" class="nav__link">Giriş</a></li>';
                }
                ?>
+
+               <li class="nav__item"><a class="button nav__link" href="#popup1">Bildirimler</a></li>
 
             </ul>
 
@@ -113,6 +120,16 @@
                <img src="assets/img/bird-1.svg" alt="" class="home__bird-1">
                <img src="assets/img/bird-2.svg" alt="" class="home__bird-2">
 
+               <div id="popup1" class="overlay">
+                  <div class="popup">
+                     <h2>Hackadia Evriliyor!</h2>
+                     <a class="close" href="#">&times;</a>
+                     <div class="content">
+                        Çok yakında burada bir tartışma oramı başlatabileceksiniz. Bu ortam ne olacak? Belki de sadece hesap oluşturabildiğiniz bir sayfa olacaktır...
+                     </div>
+                  </div>
+               </div>
+
             </div>
 
 
@@ -141,7 +158,7 @@
                <input type="radio" name="fancy" style="display:none;" value="sedan" id="sedan" />
 
                <label class="neuron" for="neuron">&#9827; Neuron</label>
-               
+
                <label class="ziga" for="ziga">&#9830; TULGAR: Ziga</label>
 
                <label class="algan" for="algan">&#9830; TULGAR: Algan</label>
@@ -154,40 +171,46 @@
 
       </section>
 
-      <section class="target" id="target">
+      <hr>
+
+      <section class="timeline-con" id="timeline-con">
 
          <div class="home__container container">
-            <div class="timeline">
-               <div class="outer">
-                  <div class="card">
-                     <div class="info">
-                        <h3 class="title">Title 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                     </div>
+            <div class="entries">
+               <div class="entry" style="backdrop-filter: blur(20px); box-shadow: 0px 0px 2px black; border-radius: 20px;">
+                  <div class="title">2022 Ocak - Haziran</div>
+                  <div class="body">
+                     <p>Hackadia ilk proje Thunar ile beraber açıldı. Beta testleri bu yılda devam etti. Tarihler 28 Haziran 2022'yi gösterdiğinde Thunar ilk güncellemesini aldı ve yolculuk başladı</p>
                   </div>
-                  <div class="card">
-                     <div class="info">
-                        <h3 class="title">Title 2</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                     </div>
+               </div>
+               <div class="entry" style="backdrop-filter: blur(20px); box-shadow: 0px 0px 2px black; border-radius: 20px;">
+                  <div class="title">2022 Haziran - Aralık</div>
+                  <div class="body">
+                     <p>Thunar hızla gelişmeye devam etti. Yepyeni güncellemeler ve dev sistemler ile güçlendirilmiş alt yapıya kavuştu</p>
                   </div>
-                  <div class="card">
-                     <div class="info">
-                        <h3 class="title">Title 3</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                     </div>
+               </div>
+               <div class="entry" style="backdrop-filter: blur(20px); box-shadow: 0px 0px 2px black; border-radius: 20px;">
+                  <div class="title big">2023 Ocak - Haziran</div>
+                  <div class="body">
+                     <p>Geliştirici ekip sadece bıt geliştirmekten sıkılıp farklı projeye yöneldiler. Bir müzik oynatıcısı yazıldı. Neuron Payer Windows ve Linux cihazlara Mart ayında çıkışını gerçekleştirdi. Haziran ayına kadar toplam 8 güncelleme aldı ve v2 ile yaza giriş yaptı</p>
                   </div>
-                  <div class="card">
-                     <div class="info">
-                        <h3 class="title">Title 4</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                     </div>
+               </div>
+               <div class="entry" style="backdrop-filter: blur(20px); box-shadow: 0px 0px 2px black; border-radius: 20px;">
+                  <div class="title">2023 Haziran - Aralık</div>
+                  <div class="body">
+                     <p>Yaza v2 ile giriş yapan Neuron hızla büyüdü. O sırada artık Thunar güncelleme almayı bıraktı. Yaklaşık 6 ay boyunca Thunar'dan tek bir haber alındı. Thunar kodları herkese açılmıştı. Aralık ayına gelindiğinde 2024 Ocak ayında Thunar'ın tarihin tozlu raflarına kaldırılacağı bildirildi. Neuron Player ise güncelleme almaya devam edip v4 ile yılı noktaladı</p>
                   </div>
-                  <div class="card">
-                     <div class="info">
-                        <h3 class="title">Title 5</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                     </div>
+               </div>
+               <div class="entry" style="backdrop-filter: blur(20px); box-shadow: 0px 0px 2px black; border-radius: 20px;">
+                  <div class="title">2024 Ocak - Şubat</div>
+                  <div class="body">
+                     <p>Hackadia, Neuron'dan sonra yeni projelere yöneldi. WEB sitesinde dev bir yenilik yapılmaya hazırlanıldı. Şu anda gördüğünüz gibi de site büyük bir yeniliğe gitti. Ancak bununla sınırlı değil! TULGAR ismi verilen seri projesine başlanıldı. TULGAR projesi Hackadia tarfından girişeln en büyük proje oldu. TULGAR: Ziga, TULGAR: Algan ve TULGAR: Sedan şu anda geliştirme aşamasında olan projelerdir</p>
+                  </div>
+               </div>
+               <div class="entry" style="backdrop-filter: blur(20px); box-shadow: 0px 0px 2px black; border-radius: 20px;">
+                  <div class="title big">2024 Hedeflerimiz</div>
+                  <div class="body">
+                     <p>Yılın 2. çeyreğinde TULGAR: Ziga, 3. çeyreğinde TULGAR: Algan ve son çeyreğinde TULGAR: Sedan projelerinin çıkarılması planlanıyor. İlk çeyrek bitmeden ise Neuron'un 4.1 günellemesi almasına hazırlanılıyor</p>
                   </div>
                </div>
             </div>
@@ -195,17 +218,9 @@
 
       </section>
 
-      <section class="contact" id="contact">
-
-         <div class="home__container container">
-
-         </div>
-
-      </section>
-
       <section class="footer" id="footer">
 
-         <div class="homr__container container">
+         <div class="home__container container">
 
             <footer class="footer__floating">
 
@@ -258,7 +273,6 @@
 
    <!-- İletişim Formu -->
    <script src="assets/js/contact.js"></script>
-
 </body>
 
 </html>

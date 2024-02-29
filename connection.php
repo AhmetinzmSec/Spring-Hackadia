@@ -1,15 +1,17 @@
 <?php
+$DEBUG = true;
 
-session_start();
+// connect  to db
+$conn = mysqli_connect('localhost', 'root', 'root', 'forum');
+// if not debug mode you should input the correct username and password
 
-$host = 'localhost';
-$dbUsername = 'root';
-$dbPassword = 'root';
-$dbName = 'hackadia';
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-
-if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
+// check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-?>
+if ($DEBUG) {
+    $root = 'http://' . $_SERVER['HTTP_HOST'] . '/forum-sederhana/';
+} else {
+    $root = "/";
+}

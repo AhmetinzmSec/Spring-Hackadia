@@ -1,4 +1,4 @@
-document.querySelector('form').addEventListener('submit', function(e) {
+/* document.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent the default form submission
 
     // Collect form data
@@ -16,4 +16,23 @@ document.querySelector('form').addEventListener('submit', function(e) {
 
     // Send the email
     window.open(`mailto:${emailRecipient}?subject=${emailSubject}&body=${emailBody}`);
- });
+ }); */
+
+ const inputs = document.querySelectorAll(".input");
+
+function focusFunc() {
+  let parent = this.parentNode;
+  parent.classList.add("focus");
+}
+
+function blurFunc() {
+  let parent = this.parentNode;
+  if (this.value == "") {
+    parent.classList.remove("focus");
+  }
+}
+
+inputs.forEach((input) => {
+  input.addEventListener("focus", focusFunc);
+  input.addEventListener("blur", blurFunc);
+});

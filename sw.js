@@ -7,10 +7,10 @@ const CACHE_NAME = 'v1_cache_programador_fitness',
     'https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwJYtWqZPAA.woff2',
     'https://use.fontawesome.com/releases/v5.0.7/css/all.css',
     'https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-brands-400.woff2',
-    './assets/css/styles.css',
-    './script.js',
-    './assets/img/hackadia.png',
-    './assets/img/hackadia.png'
+    'https://hackadia.com.tr/assets/css/styles.css',
+    'https://hackadia.com.tr/script.js',
+    'https://hackadia.com.tr/assets/img/hackadia.png',
+    'https://hackadia.com.tr/assets/img/hackadia.png'
   ]
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos

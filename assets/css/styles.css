@@ -79,7 +79,7 @@ body {
 
 body .target{
 
-  background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("https://i.hizliresim.com/sb8pthr.gif") no-repeat;
+  background: linear-gradient(var(--body-color-alpha), var(--body-color-alpha)), url("https://i.hizliresim.com/sb8pthr.gif") no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -133,6 +133,15 @@ body.dark-mode .nav__button-ghost{
 body.dark-mode .nav__toggle,
 body.dark-mode .nav__close {
   color: var(--title-color-dark);
+}
+
+body.dark-mode .target{
+
+  background: linear-gradient(var(--body-color-alpha-dark), var(--body-color-alpha-dark)), url("https://i.hizliresim.com/sb8pthr.gif") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
 }
 
 ul {
@@ -621,8 +630,8 @@ body {
   width: 100%;
   padding: 12px 24px;
   border-radius: 6px;
-  border: 1px solid #e0e0e0;
- 
+  border: 1px solid #e0e0e0; 
+  background: transparent;
   font-weight: 500;
   font-size: 16px;
   color: #6b7280;

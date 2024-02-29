@@ -1,15 +1,7 @@
 <?php
 session_start();
 
-// Veritabanı bağlantısı - 'userDB' adında bir veritabanı ve 'users' adında bir tablo olduğunu varsayalım
-$host = 'localhost'; // veya kendi sunucunuzun adresi
-$dbUsername = 'root'; // veya veritabanı kullanıcı adınız
-$dbPassword = 'root'; // veya veritabanı şifreniz
-$dbName = 'hackadia'; // veritabanı adı
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
-}
+include "connection.php";
 
 
 if (isset($_POST['login'])) {
