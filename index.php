@@ -16,8 +16,6 @@
 
    <link rel="stylesheet" href="assets/css/slider.css">
 
-   <link rel="stylesheet" href="assets/css/snowflake.css">
-
    <link rel="stylesheet" href="assets/css/footer.css">
 
    <link rel="stylesheet" href="assets/css/timeline.css">
@@ -25,6 +23,8 @@
    <link rel="stylesheet" href="assets/css/pop-up.css">
 
    <link rel="stylesheet" href="assets/css/contact.css">
+
+   <link rel="stylesheet" href="assets/css/dynamic-island.css">
 
    <title>Hackadia</title>
 
@@ -52,15 +52,22 @@
                <li class="nav__item"><a href="#timeline-con" class="nav__link">Yolculuk</a></li>
 
                <?php
+
                include 'connection.php';
+               
                if (isset($_SESSION['username'])) {
+
                   echo '<li class="nav__item"><a href="profile.php" class="nav__link">' . $_SESSION['username'] . '</a></li>';
+
                } else {
-                  echo '<li class="nav__item"><a href="forum/login.php" class="nav__link">Giriş</a></li>';
+
+                  echo '<li class="nav__item"><a href="login.php" class="nav__link">Giriş</a></li>';
+
                }
+
                ?>
 
-               <li class="nav__item"><a class="button nav__link" href="#popup1">Bildirimler</a></li>
+               <!-- <li class="nav__item"><a class="button nav__link" href="#popup1">Bildirimler</a></li> -->
 
             </ul>
 
@@ -120,7 +127,10 @@
                <img src="assets/img/bird-1.svg" alt="" class="home__bird-1">
                <img src="assets/img/bird-2.svg" alt="" class="home__bird-2">
 
-               <div id="popup1" class="overlay">
+
+
+
+               <!-- <div id="popup1" class="overlay">
                   <div class="popup">
                      <h2>Hackadia Evriliyor!</h2>
                      <a class="close" href="#">&times;</a>
@@ -128,7 +138,7 @@
                         Çok yakında burada bir tartışma oramı başlatabileceksiniz. Bu ortam ne olacak? Belki de sadece hesap oluşturabildiğiniz bir sayfa olacaktır...
                      </div>
                   </div>
-               </div>
+               </div> -->
 
             </div>
 
@@ -222,22 +232,21 @@
 
          <div class="home__container container">
 
-            <footer class="footer__floating">
+            <div class="notch-container" tabindex="0">
+               <div class="notch">
+                  <div class="content">
+                     <div class="left">
+                        <div class="title"><img src="assets/img/hackadia.png" alt="" srcset=""></div>
+                        <div class="text"></div>
+                     </div>
+                     <div class="right">
 
-               <div class="footer__content">
-
-                  <a href="#home" class="footer__logo">
-
-                     <img src="assets/img/hackadia.png" alt="Hackadia Logo" class="footer__logo-img">
-
-                  </a>
-
-                  <p class="footer__copy">&#169; Hackadia. All rights reserved.</p>
-
+                        Hackadia Yönetim Ekibi
+                     
+                     </div>
+                  </div>
                </div>
-
-            </footer>
-
+            </div>
          </div>
 
       </section>
